@@ -2,7 +2,7 @@ package br.com.impacta.controller;
 
 public class Cartao {
 
-	String teste =("Hellow Word2");
+	String teste =("Hellow Word");
 
 	public String getTeste() {
 		return teste;
@@ -13,4 +13,3 @@ public class Cartao {
 	}
 	
 }
-
