@@ -34,19 +34,23 @@ public class CartoesController {
 //		return despesa;
 //	}
 //	
-//	@RequestMapping(value="/buscar2", 
-//			method=RequestMethod.GET,
-//			params = {"um", "dois"})  
-//	@ResponseBody
-//	public Despesa buscarMultiplosParametros(
-//			@RequestParam(value = "um") boolean um, 
-//			@RequestParam(value = "dois") boolean dois) {
-//		
-//		System.out.println("um: " + um);
-//		System.out.println("dois: " + dois);
-//		
-//		return new Despesa();
-//	}
+	@RequestMapping(value="/nivel", 
+			method=RequestMethod.GET,
+			params = {"um", "dois", "tres", "quatro"})  
+	@ResponseBody
+	public Cartao buscaPorCategorias(
+			@RequestParam(value = "um") boolean um, 
+			@RequestParam(value = "dois") boolean dois,
+			@RequestParam(value = "tres") boolean tres, 
+			@RequestParam(value = "quatro") boolean quatro) {
+		
+		System.out.println("Nivel: " + um);
+		System.out.println("Nivel: " + dois);
+		System.out.println("Nivel: " + tres);
+		System.out.println("Nivel: " + quatro);
+		
+		return new Cartao();
+	}
 //	
 //	@RequestMapping(value="/buscarQualquerCoisa", 
 //			method=RequestMethod.GET,
