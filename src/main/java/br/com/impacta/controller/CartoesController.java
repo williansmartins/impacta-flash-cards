@@ -3,17 +3,24 @@ package br.com.impacta.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import br.com.impacta.model.Cartao;
 
 
 @Controller
 @RequestMapping("/cartoes")
 public class CartoesController {
 
-
+	@RequestMapping(value="/inserir", method=RequestMethod.POST)  
+	@ResponseBody
+	public Cartao inserir(@RequestBody Cartao entrada) {
+		return entrada;
+	}
 
 	@RequestMapping(value="/deletar/{id}",method=RequestMethod.DELETE)
 	@ResponseBody
