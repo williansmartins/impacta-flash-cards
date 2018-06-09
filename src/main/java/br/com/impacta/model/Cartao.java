@@ -8,7 +8,7 @@ public class Cartao {
 	
 	private String textoOrigem;
 	
-	private String textoDistino;
+	private String textoDestino;
 	
 	private Long nivel;
 
@@ -36,12 +36,12 @@ public class Cartao {
 		this.textoOrigem = textoOrigem;
 	}
 
-	public String getTextoDistino() {
-		return textoDistino;
+	public String getTextoDestino() {
+		return textoDestino;
 	}
 
-	public void setTextoDistino(String textoDistino) {
-		this.textoDistino = textoDistino;
+	public void setTextoDestino(String textoDestino) {
+		this.textoDestino = textoDestino;
 	}
 
 	public Long getNivel() {
