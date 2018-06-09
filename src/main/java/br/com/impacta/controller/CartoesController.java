@@ -15,10 +15,19 @@ import br.com.impacta.model.Cartao;
 @Controller
 @RequestMapping("/cartoes")
 public class CartoesController {
+	
 
-	@RequestMapping(value="/inserir", method=RequestMethod.POST)  
+	@RequestMapping(value="", method=RequestMethod.POST)  
 	@ResponseBody
 	public Cartao inserir(@RequestBody Cartao entrada) {
+		return entrada;
+	}
+	
+	@RequestMapping(value="{id}", method=RequestMethod.PUT)  
+	@ResponseBody
+	public Cartao inserir(@RequestBody Cartao entrada, @PathVariable Long id) {
+		System.out.println("atulizar" + id);
+		System.out.println("atulizar2" + entrada);
 		return entrada;
 	}
 
