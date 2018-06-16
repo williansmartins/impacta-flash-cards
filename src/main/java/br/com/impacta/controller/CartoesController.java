@@ -1,6 +1,7 @@
 package br.com.impacta.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,16 +11,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import br.com.impacta.model.Cartao;
+import br.com.impacta.repository.CartaoRepository;
 
 
 @Controller
 @RequestMapping("/cartoes")
 public class CartoesController {
 	
-
+	@Autowired
+	private CartaoRepository dao;
+	
 	@RequestMapping(value="", method=RequestMethod.POST)  
 	@ResponseBody
 	public Cartao inserir(@RequestBody Cartao entrada) {
+		dao.save(entrada);
 		return entrada;
 	}
 	
@@ -28,6 +33,7 @@ public class CartoesController {
 	public Cartao inserir(@RequestBody Cartao entrada, @PathVariable Long id) {
 		System.out.println("atulizar" + id);
 		System.out.println("atulizar2" + entrada);
+		
 		return entrada;
 	}
 
@@ -35,6 +41,7 @@ public class CartoesController {
 	@ResponseBody
 	public boolean deletar(@PathVariable long id) {
 		System.out.println("deletando id: "+id);
+		dao.deleteById(id);
 		return false;
 	}
 
@@ -42,6 +49,7 @@ public class CartoesController {
 	@ResponseBody
 	public boolean deletar() {
 		System.out.println("deletando Tudo ");
+		dao.deleteAll();
 		return false;
 	}
 	
@@ -50,7 +58,7 @@ public class CartoesController {
 	public Cartao buscar1(@PathVariable Long id) {
 
 		System.out.println("id: " + id);
-
+		dao.findById(id);
 		return new Cartao();
 	}
 	
@@ -59,7 +67,7 @@ public class CartoesController {
 	public Cartao buscar() {
 
 		System.out.println("Buscar tudo" );
-
+		dao.findAll();
 		return new Cartao();
 	}
 	
