@@ -62,5 +62,8 @@ public class Cartao {
 		this.id = id;
 	}
 	
+	public String toString() {
+        return String.format("id:%d,idiomaOrigem:%s,idiomaDestino:%d,textoDestino:%s,textoOrigem:%s,nivel:%s", id, idiomaOrigem, idiomaDestino, textoDestino, textoOrigem, nivel);
+    }
 		
 }
