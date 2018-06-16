@@ -1,5 +1,9 @@
+
 package br.com.impacta.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Cartao {
 	
 	private Long id;
