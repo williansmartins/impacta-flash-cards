@@ -18,6 +18,17 @@ public class Cartao {
 	
 	private Long nivel;
 
+	public Cartao(Long id, String idiomaOrigem, String idiomaDestino, String textoOrigem, String textoDestino,
+			Long nivel) {
+		super();
+		this.id = id;
+		this.idiomaOrigem = idiomaOrigem;
+		this.idiomaDestino = idiomaDestino;
+		this.textoOrigem = textoOrigem;
+		this.textoDestino = textoDestino;
+		this.nivel = nivel;
+	}
+
 	public String getIdiomaOrigem() {
 		return idiomaOrigem;
 	}
