@@ -1,16 +1,11 @@
-package br.com.impacta.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package br.com.impacta.model;
 
 import javax.persistence.Entity;
 
 @Entity
 public class Cartao {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String idiomaOrigem;
@@ -22,6 +17,17 @@ public class Cartao {
 	private String textoDestino;
 	
 	private Long nivel;
+
+	public Cartao(Long id, String idiomaOrigem, String idiomaDestino, String textoOrigem, String textoDestino,
+			Long nivel) {
+		super();
+		this.id = id;
+		this.idiomaOrigem = idiomaOrigem;
+		this.idiomaDestino = idiomaDestino;
+		this.textoOrigem = textoOrigem;
+		this.textoDestino = textoDestino;
+		this.nivel = nivel;
+	}
 
 	public String getIdiomaOrigem() {
 		return idiomaOrigem;
