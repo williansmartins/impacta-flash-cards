@@ -2,10 +2,13 @@
 package br.com.impacta.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Cartao {
 	
+	@Id @GeneratedValue
 	private Long id;
 	
 	private String idiomaOrigem;
@@ -27,6 +30,10 @@ public class Cartao {
 		this.textoOrigem = textoOrigem;
 		this.textoDestino = textoDestino;
 		this.nivel = nivel;
+	}
+
+	public Cartao() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getIdiomaOrigem() {
