@@ -1,10 +1,17 @@
+
 package br.com.impacta.model;
 
 import javax.persistence.Entity;
+<<<<<<< HEAD
+=======
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+>>>>>>> e8f3db4b2c7b2dbda8f08ca6c1a661a36a028816
 
 @Entity
 public class Cartao {
 	
+	@Id @GeneratedValue
 	private Long id;
 	
 	private String idiomaOrigem;
@@ -28,6 +35,13 @@ public class Cartao {
 		this.nivel = nivel;
 	}
 
+<<<<<<< HEAD
+=======
+	public Cartao() {
+		// TODO Auto-generated constructor stub
+	}
+
+>>>>>>> e8f3db4b2c7b2dbda8f08ca6c1a661a36a028816
 	public String getIdiomaOrigem() {
 		return idiomaOrigem;
 	}
