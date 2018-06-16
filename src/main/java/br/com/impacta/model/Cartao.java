@@ -2,6 +2,8 @@ package br.com.impacta.model;
 
 public class Cartao {
 	
+	private Long id;
+	
 	private String idiomaOrigem;
 	
 	private String idiomaDestino;
@@ -50,6 +52,14 @@ public class Cartao {
 
 	public void setNivel(Long nivel) {
 		this.nivel = nivel;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 		

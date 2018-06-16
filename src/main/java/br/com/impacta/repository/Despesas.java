@@ -1,8 +1,9 @@
 package br.com.impacta.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import br.com.impacta.springmvc.gerenciadordespesas.model.Despesa;
 
-public interface Despesas extends JpaRepository<Despesa,Long>{
+import br.com.impacta.model.Cartao;
+
+public interface Despesas extends JpaRepository<Cartao,Long>{
 
 }
