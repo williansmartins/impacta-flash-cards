@@ -1,5 +1,8 @@
 package br.com.impacta.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Cartao {
 	
 	private Long id;
@@ -13,6 +16,17 @@ public class Cartao {
 	private String textoDestino;
 	
 	private Long nivel;
+
+	public Cartao(Long id, String idiomaOrigem, String idiomaDestino, String textoOrigem, String textoDestino,
+			Long nivel) {
+		super();
+		this.id = id;
+		this.idiomaOrigem = idiomaOrigem;
+		this.idiomaDestino = idiomaDestino;
+		this.textoOrigem = textoOrigem;
+		this.textoDestino = textoDestino;
+		this.nivel = nivel;
+	}
 
 	public String getIdiomaOrigem() {
 		return idiomaOrigem;
@@ -62,8 +76,12 @@ public class Cartao {
 		this.id = id;
 	}
 	
+	@Override
 	public String toString() {
-        return String.format("id:%d,idiomaOrigem:%s,idiomaDestino:%d,textoDestino:%s,textoOrigem:%s,nivel:%s", id, idiomaOrigem, idiomaDestino, textoDestino, textoOrigem, nivel);
-    }
+		return "Cartao [id=" + id + ", idiomaOrigem=" + idiomaOrigem + ", idiomaDestino=" + idiomaDestino
+				+ ", textoOrigem=" + textoOrigem + ", textoDestino=" + textoDestino + ", nivel=" + nivel + "]";
+	}
+	
+	
 		
 }
