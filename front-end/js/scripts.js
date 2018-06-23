@@ -1,20 +1,9 @@
-$( document ).ready(function() {
-	$.get( "http://localhost:8080/cartoes", function( data ) {
-	  //console.info( data );
+var app = angular.module('myApp', []);
 
-  	//$("#tabela #corpo").empty();
-	
-	for (var i = 0; i < data.length; i++) {
-		var cartao = data[i];
-		//console.info( cartao.id );
-		$("#tabela #corpo").append(" \
-			<tr> \
-				<td>" + cartao.id + "</td> \
-				<td>" + cartao.idiomaOrigem + "</td> \
-				<td>" + cartao.idiomaDestino + "</td> \
-			</tr> \
-		");
-	};
 
-	});
+app.controller('cartaoCtrl', function($scope, $http) {
+    $http.get("http://localhost:8080/cartoes")
+    .then(function (response) {
+    	$scope.cartoes = response.data;
+    });
 });

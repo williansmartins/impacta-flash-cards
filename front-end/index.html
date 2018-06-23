@@ -1,11 +1,11 @@
 <html>
 <head>
 	<title>titulo da pagina</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="js/scripts.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body>
+<body ng-app="myApp" ng-controller="cartaoCtrl">
 	<h1>Flash Cards - Front End</h1>
 
 	<table border="1" id="tabela">
@@ -14,13 +14,23 @@
 				<th>id</th>
 				<th>idioma de origem</th>
 				<th>idioma de destino</th>
+				<th>texto origem</th>
+				<th>texto destino</th>
 			</tr>
 		</thead>
 		<tbody id="corpo">
-
+			<tr ng-repeat="cartao in cartoes">
+				<td>{{cartao.id}}</td>
+				<td>{{cartao.idiomaOrigem}}</td>
+				<td>{{cartao.idiomaDestino}}</td>
+				<td>{{cartao.textoOrigem}}</td>
+				<td>{{cartao.textoDestino}}</td>
+			</tr>
 		</tbody>
 	</table>
 
+	<h1>CARTOES</h1>
+	{{cartoes}}
 	
 </body>
 </html>
