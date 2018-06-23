@@ -2,39 +2,97 @@
 <head>
 	<title>titulo da pagina</title>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="js/scripts.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" href="css/styles.css">
 </head>
-<body ng-app="myApp" ng-controller="cartaoCtrl">
-	<h1>Flash Cards - Front End</h1>
+<body ng-app="myApp" ng-controller="cartaoCtrl"><br><br>
+	<div class="container">
+		<div class="row">
+		<p ng-if="cartoes.length == 0">Não existe cartões na tabela</p>
+		<div class="col-lg-6">
+			<div class="card card-outline-secondary">
+				<div class="card-header">
+					<h3 class="mb-0">Formulario</h3>
+				</div>
+				<div class="card-body">
+					<form class="form" role="form" autocomplete="off" id="form-register">
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label form-control-label">Idioma origem</label>
+							<div class="col-lg-9">
+								<input class="form-control" type="text" id="idiomaOrigem" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label form-control-label">Idioma destino</label>
+							<div class="col-lg-9">
+								<input class="form-control" type="text" id="idiomaDestino" required>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label form-control-label">Texto origem</label>
+							<div class="col-lg-9">
+								<input class="form-control" type="text" id="textoOrigem">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label form-control-label">Texto destino</label>
+							<div class="col-lg-9">
+								<input class="form-control" type="text" ids="textoDestino">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label form-control-label"></label>
+							<div class="col-lg-9">
+								<input type="reset" class="btn btn-danger" value="Limpar" id="btnLimpar">
+								<input type="submit" class="btn btn-primary" value="Cadastrar">
+							</div>
+						</div>
+					</form>
+				</div><!--card body-->
+			</div><!-- card top -->
+		</div>
 
-	<p ng-if="cartoes.length == 0">Não existe cartões na tabela</p>
+		<div class="col-lg-6">
+			<div class="card card-outline-secondary">
+				<div class="card-header">
+					<h3 class="mb-0">Flash Cards</h3>
+				</div>
+				<div class="card-body">
+					<div class="table-responsive">
+						<table class="table" id="tabela" ng-if="cartoes.length > 0">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Idioma Origem</th>
+								<th>Idioma Destino</th>
+								<th>Texto Origem</th>
+								<th>Texto Destino</th>
+								<th>Açoes</th>
+							</tr>
+						</thead>
+						<tbody id="corpo">
+							<tr ng-repeat="cartao in cartoes">
+								<td>{{cartao.id}}</td>
+								<td>{{cartao.idiomaOrigem}}</td>
+								<td>{{cartao.idiomaDestino}}</td>
+								<td>{{cartao.textoOrigem}}</td>
+								<td>{{cartao.textoDestino}}</td>
+								<td> <button class="btn btn-danger" ng-click="deletarCartao(cartao.id)">X</button> </td>
+							</tr>
+						</tbody>
+						</table>
+					</div><!-- table responsive div-->
+				</div>
+			</div>
+		</div><!-- col lg div-->
+	</div>
+</div><!-- container -->
 
-	<table border="1" id="tabela" ng-if="cartoes.length > 0">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>idioma de origem</th>
-				<th>idioma de destino</th>
-				<th>texto origem</th>
-				<th>texto destino</th>
-				<th>acoes</th>
-			</tr>
-		</thead>
-		<tbody id="corpo">
-			<tr ng-repeat="cartao in cartoes">
-				<td>{{cartao.id}}</td>
-				<td>{{cartao.idiomaOrigem}}</td>
-				<td>{{cartao.idiomaDestino}}</td>
-				<td>{{cartao.textoOrigem}}</td>
-				<td>{{cartao.textoDestino}}</td>
-				<td> <a href="#" ng-click="deletarCartao(cartao.id)">X</a> </td>
-			</tr>
-		</tbody>
-	</table>
-
-	<h1>Formulário</h1>
 	<form>
 		
 	</form>

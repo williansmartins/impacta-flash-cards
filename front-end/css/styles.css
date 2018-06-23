@@ -1,3 +1,11 @@
 h1{
 	color: blue;
 }
+
+.card-header{
+	background-color: lightseagreen;
+}
+
+.card-body{
+	background-color: lightcyan;
+}
