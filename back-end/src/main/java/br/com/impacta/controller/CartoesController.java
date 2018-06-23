@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,10 +20,14 @@ import br.com.impacta.repository.CartaoRepository;
 
 @Controller
 @RequestMapping("/cartoes")
+@CrossOrigin(origins = "http://localhost")
 public class CartoesController {
 	
 	@Autowired
 	private CartaoRepository dao;
+	
+	@Autowired
+	private CartaoRepository dao2;
 	
 	@RequestMapping(value="", method=RequestMethod.POST)  
 	@ResponseBody
