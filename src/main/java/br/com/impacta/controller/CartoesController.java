@@ -1,6 +1,9 @@
 package br.com.impacta.controller;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,10 +33,9 @@ public class CartoesController {
 	
 	@RequestMapping(value="{id}", method=RequestMethod.PUT)  
 	@ResponseBody
-	public Cartao inserir(@RequestBody Cartao entrada, @PathVariable Long id) {
+	public Cartao atualizar(@RequestBody Cartao entrada, @PathVariable Long id) {
 		System.out.println("atulizar" + id);
 		System.out.println("atulizar2" + entrada);
-		
 		return entrada;
 	}
 
@@ -58,17 +60,20 @@ public class CartoesController {
 	public Cartao buscar1(@PathVariable Long id) {
 
 		System.out.println("id: " + id);
-		dao.findById(id);
-		return new Cartao();
+		
+		Cartao cart = new Cartao();
+		cart = dao.findById(id).get();
+		return cart;
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ResponseBody
-	public Cartao buscar() {
+	public List<Cartao> buscar() {
 
 		System.out.println("Buscar tudo" );
-		dao.findAll();
-		return new Cartao();
+		List<Cartao> cartoes = new ArrayList<>();
+		cartoes = dao.findAll();
+		return cartoes;
 	}
 	
 	@RequestMapping(value="/nivel", 
