@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>titulo da pagina</title>
+	<meta charset="UTF-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 	<script src="js/scripts.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -8,7 +9,9 @@
 <body ng-app="myApp" ng-controller="cartaoCtrl">
 	<h1>Flash Cards - Front End</h1>
 
-	<table border="1" id="tabela">
+	<p ng-if="cartoes.length == 0">Não existe cartões na tabela</p>
+
+	<table border="1" id="tabela" ng-if="cartoes.length > 0">
 		<thead>
 			<tr>
 				<th>id</th>
@@ -26,13 +29,15 @@
 				<td>{{cartao.idiomaDestino}}</td>
 				<td>{{cartao.textoOrigem}}</td>
 				<td>{{cartao.textoDestino}}</td>
-				<td> <a href="#">X</a> </td>
+				<td> <a href="#" ng-click="deletarCartao(cartao.id)">X</a> </td>
 			</tr>
 		</tbody>
 	</table>
 
-	<h1>CARTOES</h1>
-	{{cartoes}}
+	<h1>Formulário</h1>
+	<form>
+		
+	</form>
 	
 </body>
 </html>
