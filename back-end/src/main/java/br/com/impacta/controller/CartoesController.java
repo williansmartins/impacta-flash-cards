@@ -108,17 +108,25 @@ public class CartoesController {
 			method=RequestMethod.GET,
 			params = {"um", "dois", "tres", "quatro"})  
 	@ResponseBody
-	public Cartao buscaPorCategorias(
+	public List<Cartao> buscaPorCategorias(
 			@RequestParam(value = "um") boolean um, 
 			@RequestParam(value = "dois") boolean dois,
 			@RequestParam(value = "tres") boolean tres, 
 			@RequestParam(value = "quatro") boolean quatro) {
 		
-		System.out.println("Nivel: " + um);
-		System.out.println("Nivel: " + dois);
-		System.out.println("Nivel: " + tres);
-		System.out.println("Nivel: " + quatro);
-		
-		return new Cartao();
+		List<Cartao> cartoes = new ArrayList<Cartao>();
+		if(um){
+			cartoes.addAll(dao.findByNivel((long) 1));
+		}
+		if(dois){
+			cartoes.addAll(dao.findByNivel((long) 2));
+		}
+		if(tres){
+			cartoes.addAll(dao.findByNivel((long) 3));
+		}
+		if(quatro){
+			cartoes.addAll(dao.findByNivel((long) 4));
+		}
+		return cartoes;
 	}
 }
