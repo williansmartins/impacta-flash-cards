@@ -24,8 +24,30 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	    });
     }
 
+    var inserirCartao = function(){
+    	var cartao={
+    		"idiomaOrigem":"TESTE",
+			 "idiomaDestino":"Polonês",
+			 "textoOrigem":"oi",
+			 "textoDestino":"cześć",
+			 "nivel":"1"
+    	};
+
+	    $http({
+			method: 'POST',
+			url: "http://localhost:8080/cartoes",
+			data: cartao
+			})
+			.then(function (success) {
+				alert("success");
+			}, function (error) {
+			  	alert("ERRO");
+		});
+    }
+
     var init = function(){
     	buscarCartoes(); 
+    	inserirCartao();
     }
 
     init();
