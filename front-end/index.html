@@ -1,8 +1,37 @@
 <html>
 <head>
 	<title>titulo da pagina</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			$.get( "backend.txt", function( data ) {
+			  alert( "Data Loaded: " + data );
+			});
+		});
+	</script>
 </head>
 <body>
 	<h1>Flash Cards - Front End</h1>
+
+	<table border="1">
+		<tr>
+			<th>id</th>
+			<th>idioma de origem</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>linguagem1</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>linguagem2</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>linguagem3</td>
+		</tr>
+	</table>
+
+	
 </body>
 </html>
