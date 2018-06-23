@@ -34,46 +34,69 @@ public class CartoesController {
 	@RequestMapping(value="{id}", method=RequestMethod.PUT)  
 	@ResponseBody
 	public Cartao atualizar(@RequestBody Cartao entrada, @PathVariable Long id) {
-		System.out.println("atulizar" + id);
-		System.out.println("atulizar2" + entrada);
-		return entrada;
+		System.out.println("atualizando id: " + id);
+		System.out.println("atualizar cartao: " + entrada);
+		
+		entrada.setId(id);
+		
+		try {
+			dao.save(entrada);
+			return entrada;
+		} catch (Exception e) {
+			return new Cartao();
+		}
 	}
 
 	@RequestMapping(value="/deletar/{id}",method=RequestMethod.DELETE)
 	@ResponseBody
 	public boolean deletar(@PathVariable long id) {
 		System.out.println("deletando id: "+id);
-		dao.deleteById(id);
-		return false;
+		try{
+			dao.deleteById(id);
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
 	}
 
 	@RequestMapping(value = "/deletar", method = RequestMethod.DELETE)
 	@ResponseBody
 	public boolean deletar() {
 		System.out.println("deletando Tudo ");
-		dao.deleteAll();
-		return false;
+		
+		try{
+			dao.deleteAll();
+			return true;
+		}catch (Exception e) {
+			return false;
+		}
 	}
 	
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Cartao buscar1(@PathVariable Long id) {
 
-		System.out.println("id: " + id);
+		System.out.println("buscando cartao pelo id: " + id);
 		
-		Cartao cart = new Cartao();
-		cart = dao.findById(id).get();
-		return cart;
+		try{
+			Cartao cart = dao.findById(id).get();
+			return cart;
+		}catch (Exception e) {
+			return new Cartao();
+		}
 	}
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Cartao> buscar() {
-
-		System.out.println("Buscar tudo" );
-		List<Cartao> cartoes = new ArrayList<>();
-		cartoes = dao.findAll();
-		return cartoes;
+		System.out.println("Buscando tudo");
+		
+		try{
+			List<Cartao> cartoes = dao.findAll();
+			return cartoes;
+		}catch (Exception e) {
+			return new ArrayList<>();
+		}
 	}
 	
 	@RequestMapping(value="/nivel", 
