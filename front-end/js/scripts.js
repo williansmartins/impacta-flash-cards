@@ -6,9 +6,14 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
 	$scope.cartoes = null;
 	$scope.cartao = null;
 	$scope.cartaoSelecionado = null;
-	$scope.tela = 1;
+	$scope.tela = 3;
 	$scope.textoOrigem = true;
 	$scope.posicao = 0;
+
+	$scope.um = false;
+	$scope.dois = false;
+	$scope.tres = false;
+	$scope.quatro = false;
 
     $scope.selecionarCartao = function(cartao){
 	    $scope.cartaoSelecionado = cartao;
@@ -31,7 +36,7 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
 		$scope.cartaoAtual.nivel = nivel;
 		$scope.cartaoSelecionado = $scope.cartaoAtual;
 		$scope.inserirCartao();
-		$scope.mudarPosicao($scope.posicao++);
+		$scope.mudarPosicao(1);
     }
 
     $scope.modificarNivel = function(valor){
@@ -44,7 +49,7 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
 	    	$scope.inserirCartao();
 	    }
 	    
-	    $scope.mudarPosicao($scope.posicao++);
+	    $scope.mudarPosicao(1);
     }
 
     $scope.mudarPosicao = function(valor){    	
@@ -59,6 +64,20 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
 
     var buscarCartoes = function(){
 	    $http.get("http://172.16.16.1:8080/cartoes")
+	    .then(function (response) {
+	    	$scope.cartoes = response.data;
+	    	$scope.cartoes = $filter('orderBy')($scope.cartoes, 'id');
+	    	$scope.cartaoAtual = $scope.cartoes[$scope.posicao];
+	    });
+    }
+
+    $scope.buscarCartoesPorCategoria = function(){
+    	var um = $scope.um;
+    	var dois = $scope.dois;
+    	var tres = $scope.tres;
+    	var quatro = $scope.quatro;
+
+	    $http.get("http://172.16.16.1:8080/cartoes/nivel?um="+um+"&dois="+dois+"&tres="+tres+"&quatro="+quatro)
 	    .then(function (response) {
 	    	$scope.cartoes = response.data;
 	    	$scope.cartoes = $filter('orderBy')($scope.cartoes, 'id');
@@ -94,7 +113,7 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
     }
 
     var init = function(){
-    	buscarCartoes(); 
+    	//buscarCartoes(); 
     	$("#nivel").mask("9");
     	// $('#nivel').inputmask({
      //        mask: "99:59:59",
