@@ -20,38 +20,19 @@ import br.com.impacta.repository.CartaoRepository;
 
 @Controller
 @RequestMapping("/cartoes")
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "*")
 public class CartoesController {
 	
 	@Autowired
 	private CartaoRepository dao;
 	
-	@Autowired
-	private CartaoRepository dao2;
-	
-	@RequestMapping(value="", method=RequestMethod.POST)  
+	@RequestMapping(value="", method={RequestMethod.POST, RequestMethod.PUT})  
 	@ResponseBody
 	public Cartao inserir(@RequestBody Cartao entrada) {
 		dao.save(entrada);
 		return entrada;
 	}
 	
-	@RequestMapping(value="{id}", method=RequestMethod.PUT)  
-	@ResponseBody
-	public Cartao atualizar(@RequestBody Cartao entrada, @PathVariable Long id) {
-		System.out.println("atualizando id: " + id);
-		System.out.println("atualizar cartao: " + entrada);
-		
-		entrada.setId(id);
-		
-		try {
-			dao.save(entrada);
-			return entrada;
-		} catch (Exception e) {
-			return new Cartao();
-		}
-	}
-
 	@RequestMapping(value="/deletar/{id}",method=RequestMethod.DELETE)
 	@ResponseBody
 	public boolean deletar(@PathVariable long id) {
