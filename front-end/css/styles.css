@@ -9,3 +9,7 @@ h1{
 .card-body{
 	background-color: lightcyan;
 }
+
+.hide{
+	display: none;
+}

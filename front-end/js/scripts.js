@@ -5,16 +5,11 @@ app.controller('cartaoCtrl', function($scope, $http) {
     
 	$scope.cartoes = null;
 	$scope.cartao = null;
+	$scope.cartaoSelecionado = null;
 
-	$scope.popularCampos = function(){
-		$scope.cartao={
-			"idiomaOrigem"	: "idiomaOrigem",
-			"idiomaDestino"	: "idiomaDestino",
-			"textoOrigem"	: "textoOrigem",
-			"textoDestino"	: "textoDestino",
-			"nivel"			: "1"
-    	};
-	}
+    $scope.selecionarCartao = function(cartao){
+	    $scope.cartaoSelecionado = cartao;
+    }
 
     var buscarCartoes = function(){
 	    $http.get("http://172.16.16.1:8080/cartoes")
@@ -39,12 +34,12 @@ app.controller('cartaoCtrl', function($scope, $http) {
    	    $http({
 			method: 'POST',
 			url: "http://172.16.16.1:8080/cartoes",
-			data: $scope.cartao
+			data: $scope.cartaoSelecionado
 			})
 			.then(function (success) {
 				console.info("success");
 				buscarCartoes();
-				$scope.cartao = null;
+				$scope.cartaoSelecionado = null;
 			}, function (error) {
 			  	console.info("ERRO");
 		});
@@ -52,6 +47,11 @@ app.controller('cartaoCtrl', function($scope, $http) {
 
     var init = function(){
     	buscarCartoes(); 
+    	$("#nivel").mask("9");
+    	// $('#nivel').inputmask({
+     //        mask: "99:59:59",
+     //        definitions: {'5': {validator: "[0-5]"}}
+    	// });
     }
 
     init();

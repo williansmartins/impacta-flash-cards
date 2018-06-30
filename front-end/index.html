@@ -2,11 +2,12 @@
 <head>
 	<title>titulo da pagina</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+	<script src="js/vendor/jquery-3.3.1.slim.min.js" ></script>
+	<script src="js/vendor/jquery.maskedinput.min.js" ></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
+	<script src="js/vendor/bootstrap.min.js"></script>
+	<script src="js/vendor/angular.min.js"></script>
 	<script src="js/scripts.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
@@ -24,39 +25,39 @@
 						<div class="form-group row">
 							<label class="col-lg-3 col-form-label form-control-label">Idioma origem</label>
 							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartao.idiomaOrigem"  required>
+								<input class="form-control" type="text" ng-model="cartaoSelecionado.idiomaOrigem"  required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-lg-3 col-form-label form-control-label">Idioma destino</label>
 							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartao.idiomaDestino"  required>
+								<input class="form-control" type="text" ng-model="cartaoSelecionado.idiomaDestino"  required>
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-lg-3 col-form-label form-control-label">Texto origem</label>
 							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartao.textoOrigem"> 
+								<input class="form-control" type="text" ng-model="cartaoSelecionado.textoOrigem"> 
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-lg-3 col-form-label form-control-label">Texto destino</label>
 							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartao.textoDestino"> 
+								<input class="form-control" type="text" ng-model="cartaoSelecionado.textoDestino"> 
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-lg-3 col-form-label form-control-label">Nível</label>
 							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartao.nivel"> 
+								<input class="form-control" ng-model="cartaoSelecionado.nivel" id="nivel"> 
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="col-lg-3 col-form-label form-control-label"></label>
 							<div class="col-lg-9">
 								<input type="reset" class="btn btn-danger" value="Limpar" id="btnLimpar">
-								<input type="button" class="btn btn-success" value="popular" ng-click="popularCampos()">
-								<input type="submit" class="btn btn-primary" ng-click="inserirCartao()" value="Cadastrar">
+								<input type="button" class="btn btn-success hide" value="popular" ng-click="popularCampos()">
+								<input type="submit" class="btn btn-primary" ng-click="inserirCartao()" value="Salvar">
 							</div>
 						</div>
 					</form>
@@ -83,12 +84,13 @@
 							</tr>
 						</thead>
 						<tbody id="corpo">
-							<tr ng-repeat="cartao in cartoes">
+							<tr ng-repeat="cartao in cartoes | orderBy : 'id' ">
 								<td>{{cartao.id}}</td>
 								<td>{{cartao.idiomaOrigem}}</td>
 								<td>{{cartao.idiomaDestino}}</td>
 								<td>{{cartao.textoOrigem}}</td>
 								<td>{{cartao.textoDestino}}</td>
+								<td> <button class="btn btn-primary" ng-click="selecionarCartao(cartao)">E</button> </td>
 								<td> <button class="btn btn-danger" ng-click="deletarCartao(cartao.id)">X</button> </td>
 							</tr>
 						</tbody>
