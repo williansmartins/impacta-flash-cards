@@ -31,6 +31,7 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
 		$scope.cartaoAtual.nivel = nivel;
 		$scope.cartaoSelecionado = $scope.cartaoAtual;
 		$scope.inserirCartao();
+		$scope.mudarPosicao($scope.posicao++);
     }
 
     $scope.modificarNivel = function(valor){
@@ -46,9 +47,14 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
 	    $scope.mudarPosicao($scope.posicao++);
     }
 
-    $scope.mudarPosicao = function(valor){
-    	$scope.posicao = $scope.posicao + valor;
-	    $scope.cartaoAtual = $scope.cartoes[$scope.posicao];
+    $scope.mudarPosicao = function(valor){    	
+    	var posicaoCalq = $scope.posicao + valor;
+
+		if ( (posicaoCalq >=0) && (posicaoCalq<$scope.cartoes.length)){
+			$scope.posicao = posicaoCalq;        
+	    	$scope.cartaoAtual = $scope.cartoes[$scope.posicao];
+		}
+    	
     }
 
     var buscarCartoes = function(){
