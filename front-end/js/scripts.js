@@ -17,9 +17,9 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	    .then(function (response) {
 	    	if(response.data == true){
 	    		buscarCartoes();
-	    		alert("sucesso");
+	    		console.info("sucesso");
 	    	}else{
-	    		alert("erro");
+	    		console.info("erro");
 	    	}
 	    });
     }
@@ -39,15 +39,14 @@ app.controller('cartaoCtrl', function($scope, $http) {
 			data: cartao
 			})
 			.then(function (success) {
-				alert("success");
+				console.info("success");
 			}, function (error) {
-			  	alert("ERRO");
+			  	console.info("ERRO");
 		});
     }
 
     var init = function(){
     	buscarCartoes(); 
-    	inserirCartao();
     }
 
     init();
