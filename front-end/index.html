@@ -11,6 +11,7 @@
 	<script src="js/vendor/angular.min.js"></script>
 	<script src="js/scripts.js"></script>
 	<link rel="stylesheet" href="css/styles.css">
+	<link rel="icon" type="image/png" href="img/favicon.png" />
 </head>
 <body ng-app="myApp" ng-controller="cartaoCtrl"><br><br>
 	<div class="container">
@@ -89,7 +90,7 @@
 										<th>Idioma Destino</th>
 										<th>Texto Origem</th>
 										<th>Texto Destino</th>
-										<th>Ações <span ng-click="excluirTudo()">(excluir tudo)</span></th>
+										<th>Ações <span class="excluir-tudo" ng-click="excluirTudo()">(excluir tudo)</span></th>
 									</tr>
 								</thead>
 								<tbody id="corpo">
@@ -103,8 +104,6 @@
 											<button class="btn btn-primary" ng-click="selecionarCartao(cartao)">
 												<span class="fa fa-edit"></span>
 											</button>
-										</td>
-										<td>
 											<button class="btn btn-danger" ng-click="deletarCartao(cartao.id)">
 												<span class="fa fa-times-circle"></span>
 											</button> 

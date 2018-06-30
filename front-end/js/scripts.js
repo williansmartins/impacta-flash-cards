@@ -113,12 +113,8 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
     }
 
     var init = function(){
-    	//buscarCartoes(); 
+    	buscarCartoes(); 
     	$("#nivel").mask("9");
-    	// $('#nivel').inputmask({
-     //        mask: "99:59:59",
-     //        definitions: {'5': {validator: "[0-5]"}}
-    	// });
     }
 
     init();
