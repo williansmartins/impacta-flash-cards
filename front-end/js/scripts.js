@@ -31,6 +31,7 @@ app.controller('cartaoCtrl', function($scope, $http) {
 		$scope.cartaoAtual.nivel = nivel;
 		$scope.cartaoSelecionado = $scope.cartaoAtual;
 		$scope.inserirCartao();
+		$scope.mudarPosicao($scope.posicao++);
     }
 
     $scope.modificarNivel = function(valor){
