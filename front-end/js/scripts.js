@@ -85,17 +85,33 @@ app.controller('cartaoCtrl', function($scope, $http, $filter) {
 	    });
     }
 
-    $scope.deletarCartao = function(id){
-	    $http.delete("http://172.16.16.1:8080/cartoes/deletar/" + id)
-	    .then(function (response) {
-	    	if(response.data == true){
-	    		buscarCartoes();
-	    		console.info("sucesso");
-	    	}else{
-	    		console.info("erro");
-	    	}
-	    });
-    }
+	$scope.deletarCartao = function(id){
+	swal({
+		title: "EXCLUIR ?",
+		text: "Tem certeza que deseja excluir este registro ?",
+		icon: "warning",
+		buttons: true,
+		dangerMode: true,
+	  })
+	  .then((willDelete) => {
+		if (willDelete) {
+		$http.delete("http://172.16.16.1:8080/cartoes/deletar/" + id)
+			.then(function (response) {
+				if(response.data == true){
+					buscarCartoes();
+					console.info("sucesso");
+				}else{
+					console.info("erro");
+				}
+		});
+		swal("Deletado com sucesso!", {
+		icon: "success",
+		});
+		} else {
+		  swal("Ufa, quase foi deletado!");
+		}
+	  });
+	};
 
     $scope.inserirCartao = function(){
    	    $http({
