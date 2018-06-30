@@ -8,6 +8,7 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	$scope.cartaoSelecionado = null;
 	$scope.tela = 3;
 	$scope.textoOrigem = true;
+	$scope.posicao = 0;
 
     $scope.selecionarCartao = function(cartao){
 	    $scope.cartaoSelecionado = cartao;
@@ -21,10 +22,16 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	    alert(valor);
     }
 
+    $scope.mudarPosicao = function(valor){
+    	$scope.posicao = $scope.posicao + valor;
+	    $scope.cartaoAtual = $scope.cartoes[$scope.posicao];
+    }
+
     var buscarCartoes = function(){
 	    $http.get("http://172.16.16.1:8080/cartoes")
 	    .then(function (response) {
 	    	$scope.cartoes = response.data;
+	    	$scope.cartaoAtual = $scope.cartoes[$scope.posicao];
 	    });
     }
 

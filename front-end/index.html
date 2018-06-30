@@ -109,18 +109,19 @@
 			</div><!-- col lg div-->
 
 			<div class="flashcards" ng-show="tela==3">
+				{{posicao}}
 				<div class="linguagem">
-					<span class="origem">Ingles</span>
+					<span class="origem">{{cartaoAtual.idiomaOrigem}}</span>
 					-->
-					<span class="destino">Portugues</span>
+					<span class="destino">{{cartaoAtual.idiomaDestino}}</span>
 				</div>
 				<div class="navegacao">
-					<span class="seta-esquerda">esquerda</span>
+					<span class="seta-esquerda" ng-click="mudarPosicao(-1)">esquerda</span>
 					<div class="cartao">
-						<span class="origem" ng-show="textoOrigem" ng-click="textoOrigem=false">love</span>
-						<span class="destino" ng-show="!textoOrigem" ng-click="textoOrigem=true">amor</span>
+						<span class="origem" ng-show="textoOrigem" ng-click="textoOrigem=false">{{cartaoAtual.textoOrigem}}</span>
+						<span class="destino" ng-show="!textoOrigem" ng-click="textoOrigem=true">{{cartaoAtual.textoDestino}}</span>
 					</div>
-					<span class="seta-direita">direita</span>
+					<span class="seta-direita" ng-click="mudarPosicao(+1)">direita</span>
 				</div>
 				<div class="opcoes">
 					<button class="btn btn-success" ng-click="trocarNivel(1)">já sei</button>
