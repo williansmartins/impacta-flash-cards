@@ -3,7 +3,7 @@
 	<title>titulo da pagina</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/vendor/all.css">
 	<script src="js/vendor/jquery-3.3.1.slim.min.js" ></script>
 	<script src="js/vendor/jquery.maskedinput.min.js" ></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
@@ -89,7 +89,7 @@
 										<th>Idioma Destino</th>
 										<th>Texto Origem</th>
 										<th>Texto Destino</th>
-										<th>Açoes</th>
+										<th>Ações <span ng-click="excluirTudo()">(excluir tudo)</span></th>
 									</tr>
 								</thead>
 								<tbody id="corpo">
@@ -116,11 +116,11 @@
 					</div>
 				</div>
 			</div><!-- col lg div-->
-			<div class="col-lg-12">
+			<div class="col-lg-12 flashcards" ng-show="tela==3">
 				<div class="card card-outline-secondary">
 					<div class="card-header">
-						<div class="col-lg-12" ng-show="tela==3">
-							<h3>Posição: {{posicao}} Nível: {{cartaoAtual.nivel}}</h3>
+						<div class="col-lg-12">
+							<h3>Cartão: {{posicao+1}} Nível: {{cartaoAtual.nivel}}</h3>
 							<h2 class="center">
 								<span class="origem">{{cartaoAtual.idiomaOrigem}}</span>
 								<span class="fa fa-arrow-right"></span>
@@ -131,14 +131,14 @@
 					<div class="card-body">
 						<div class="row">
 							<div class="col-lg-3 center">
-								<span class="seta-esquerda fa fa-arrow-left fa-3x" ng-click="mudarPosicao(-1)"></span>
+								<span class="setas seta-esquerda fa fa-arrow-left fa-3x" ng-click="mudarPosicao(-1)"></span>
 							</div>
 							<div class="col-lg-6 cartao center">
 								<span class="origem" ng-show="textoOrigem" ng-click="textoOrigem=false">{{cartaoAtual.textoOrigem}}</span>
 								<span class="destino" ng-show="!textoOrigem" ng-click="textoOrigem=true">{{cartaoAtual.textoDestino}}</span>
 							</div>
 							<div class="col-lg-3 center">
-								<span class="seta-direita fa fa-arrow-right fa-3x" ng-click="mudarPosicao(+1)"></span>
+								<span class="setas seta-direita fa fa-arrow-right fa-3x" ng-click="mudarPosicao(+1)"></span>
 							</div>
 						</div>
 						<div class="row">

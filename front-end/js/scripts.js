@@ -6,7 +6,7 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	$scope.cartoes = null;
 	$scope.cartao = null;
 	$scope.cartaoSelecionado = null;
-	$scope.tela = 3;
+	$scope.tela = 1;
 	$scope.textoOrigem = true;
 	$scope.posicao = 0;
 
@@ -14,14 +14,27 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	    $scope.cartaoSelecionado = cartao;
     }
 
+    $scope.excluirTudo = function(cartao){
+	    $http({
+			method: 'DELETE',
+			url: "http://172.16.16.1:8080/cartoes/deletar"
+			})
+			.then(function (success) {
+				console.info("success");
+				buscarCartoes();
+			}, function (error) {
+			  	console.info("ERRO");
+		});
+    }
+
     $scope.trocarNivel = function(nivel){
-			$scope.cartaoAtual.nivel = nivel;
-			$scope.cartaoSelecionado = $scope.cartaoAtual;
-			$scope.inserirCartao();
+		$scope.cartaoAtual.nivel = nivel;
+		$scope.cartaoSelecionado = $scope.cartaoAtual;
+		$scope.inserirCartao();
+		$scope.mudarPosicao($scope.posicao++);
     }
 
     $scope.modificarNivel = function(valor){
-    	debugger;
     	$scope.cartaoSelecionado = $scope.cartaoAtual;
     	var nivelCalq = $scope.cartaoSelecionado.nivel + valor;
 

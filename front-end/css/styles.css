@@ -25,13 +25,17 @@ h2{
 
 .cartao{
 	margin-top: 10px;
-	font-size: 2rem;
-}
-
-.cartao:hover{
 	font-size: 5rem;
 }
 
+/*.cartao:hover{
+	font-size: 5rem;
+}*/
+
 .botoes{
 	margin-top: 20px;
+}
+
+.setas{
+	cursor: pointer;
 }
