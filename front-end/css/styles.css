@@ -13,3 +13,32 @@ h1{
 .hide{
 	display: none;
 }
+
+.navegacao{
+	outline: solid 1px;
+	height: 200px;
+}
+
+.flashcards{
+	margin: 0 auto;
+}
+
+.cartao{
+	float: left;
+	outline: solid 1px red;
+    width: 231px;
+    display: block;
+}
+
+.seta-direita{
+	float: left;
+	outline: solid 1px green;
+} 
+.seta-esquerda{
+	float: left;
+	outline: solid 1px green;
+}
+
+.opcoes{
+	margin-top: 10px;
+}

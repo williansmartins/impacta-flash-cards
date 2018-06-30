@@ -13,98 +13,125 @@
 </head>
 <body ng-app="myApp" ng-controller="cartaoCtrl"><br><br>
 	<div class="container">
-		<div class="row">
-		<p ng-if="cartoes.length == 0">Não existe cartões na tabela</p>
-		<div class="col-lg-6">
-			<div class="card card-outline-secondary">
-				<div class="card-header">
-					<h3 class="mb-0">Formulario {{idiomaOrigem}}</h3>
-				</div>
-				<div class="card-body">
-					<form class="form" role="form" autocomplete="off" id="form-register">
-						<div class="form-group row">
-							<label class="col-lg-3 col-form-label form-control-label">Idioma origem</label>
-							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartaoSelecionado.idiomaOrigem"  required>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-lg-3 col-form-label form-control-label">Idioma destino</label>
-							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartaoSelecionado.idiomaDestino"  required>
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-lg-3 col-form-label form-control-label">Texto origem</label>
-							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartaoSelecionado.textoOrigem"> 
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-lg-3 col-form-label form-control-label">Texto destino</label>
-							<div class="col-lg-9">
-								<input class="form-control" type="text" ng-model="cartaoSelecionado.textoDestino"> 
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-lg-3 col-form-label form-control-label">Nível</label>
-							<div class="col-lg-9">
-								<input class="form-control" ng-model="cartaoSelecionado.nivel" id="nivel"> 
-							</div>
-						</div>
-						<div class="form-group row">
-							<label class="col-lg-3 col-form-label form-control-label"></label>
-							<div class="col-lg-9">
-								<input type="reset" class="btn btn-danger" value="Limpar" id="btnLimpar">
-								<input type="button" class="btn btn-success hide" value="popular" ng-click="popularCampos()">
-								<input type="submit" class="btn btn-primary" ng-click="inserirCartao()" value="Salvar">
-							</div>
-						</div>
-					</form>
-				</div><!--card body-->
-			</div><!-- card top -->
-		</div>
-
-		<div class="col-lg-6">
-			<div class="card card-outline-secondary">
-				<div class="card-header">
-					<h3 class="mb-0">Flash Cards</h3>
-				</div>
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table" id="tabela" ng-if="cartoes.length > 0">
-						<thead>
-							<tr>
-								<th>Id</th>
-								<th>Idioma Origem</th>
-								<th>Idioma Destino</th>
-								<th>Texto Origem</th>
-								<th>Texto Destino</th>
-								<th>Açoes</th>
-							</tr>
-						</thead>
-						<tbody id="corpo">
-							<tr ng-repeat="cartao in cartoes | orderBy : 'id' ">
-								<td>{{cartao.id}}</td>
-								<td>{{cartao.idiomaOrigem}}</td>
-								<td>{{cartao.idiomaDestino}}</td>
-								<td>{{cartao.textoOrigem}}</td>
-								<td>{{cartao.textoDestino}}</td>
-								<td> <button class="btn btn-primary" ng-click="selecionarCartao(cartao)">E</button> </td>
-								<td> <button class="btn btn-danger" ng-click="deletarCartao(cartao.id)">X</button> </td>
-							</tr>
-						</tbody>
-						</table>
-					</div><!-- table responsive div-->
-				</div>
+		<span class="btn btn-success" ng-click="tela=1">home</span>
+		<br />
+		<br />
+		<div class="row">	
+			<div class="inicial" ng-show="tela==1">
+				<button class="btn" ng-click="tela=2">Cadastrar palavras</button>
+				<button class="btn" ng-click="tela=3">Jogar</button>
 			</div>
-		</div><!-- col lg div-->
-	</div>
-</div><!-- container -->
 
-	<form>
-		
-	</form>
+			<div class="col-lg-6 formulario" ng-show="tela==2">
+				<div class="card card-outline-secondary">
+					<div class="card-header">
+						<h3 class="mb-0">Formulario {{idiomaOrigem}}</h3>
+					</div>
+					<div class="card-body">
+						<form class="form" role="form" autocomplete="off" id="form-register">
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Idioma origem</label>
+								<div class="col-lg-9">
+									<input class="form-control" type="text" ng-model="cartaoSelecionado.idiomaOrigem"  required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Idioma destino</label>
+								<div class="col-lg-9">
+									<input class="form-control" type="text" ng-model="cartaoSelecionado.idiomaDestino"  required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Texto origem</label>
+								<div class="col-lg-9">
+									<input class="form-control" type="text" ng-model="cartaoSelecionado.textoOrigem"> 
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Texto destino</label>
+								<div class="col-lg-9">
+									<input class="form-control" type="text" ng-model="cartaoSelecionado.textoDestino"> 
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label">Nível</label>
+								<div class="col-lg-9">
+									<input class="form-control" ng-model="cartaoSelecionado.nivel" id="nivel"> 
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label form-control-label"></label>
+								<div class="col-lg-9">
+									<input type="reset" class="btn btn-danger" value="Limpar" id="btnLimpar">
+									<input type="button" class="btn btn-success hide" value="popular" ng-click="popularCampos()">
+									<input type="submit" class="btn btn-primary" ng-click="inserirCartao()" value="Salvar">
+								</div>
+							</div>
+						</form>
+					</div><!--card body-->
+				</div><!-- card top -->
+			</div>
+
+			<div class="col-lg-6 tabela" ng-show="tela==2">
+				<div class="card card-outline-secondary">
+					<div class="card-header">
+						<h3 class="mb-0">Flash Cards</h3>
+					</div>
+					<div class="card-body">
+						<div class="table-responsive">
+							<p ng-if="cartoes.length == 0">Não existe cartões na tabela</p>
+							<table class="table" id="tabela" ng-if="cartoes.length > 0">
+								<thead>
+									<tr>
+										<th>Id</th>
+										<th>Idioma Origem</th>
+										<th>Idioma Destino</th>
+										<th>Texto Origem</th>
+										<th>Texto Destino</th>
+										<th>Açoes</th>
+									</tr>
+								</thead>
+								<tbody id="corpo">
+									<tr ng-repeat="cartao in cartoes | orderBy : 'id' ">
+										<td>{{cartao.id}}</td>
+										<td>{{cartao.idiomaOrigem}}</td>
+										<td>{{cartao.idiomaDestino}}</td>
+										<td>{{cartao.textoOrigem}}</td>
+										<td>{{cartao.textoDestino}}</td>
+										<td> <button class="btn btn-primary" ng-click="selecionarCartao(cartao)">E</button> </td>
+										<td> <button class="btn btn-danger" ng-click="deletarCartao(cartao.id)">X</button> </td>
+									</tr>
+								</tbody>
+							</table>
+						</div><!-- table responsive div-->
+					</div>
+				</div>
+			</div><!-- col lg div-->
+
+			<div class="flashcards" ng-show="tela==3">
+				<div class="linguagem">
+					<span class="origem">Ingles</span>
+					-->
+					<span class="destino">Portugues</span>
+				</div>
+				<div class="navegacao">
+					<span class="seta-esquerda">esquerda</span>
+					<div class="cartao">
+						<span class="origem" ng-show="textoOrigem" ng-click="textoOrigem=false">love</span>
+						<span class="destino" ng-show="!textoOrigem" ng-click="textoOrigem=true">amor</span>
+					</div>
+					<span class="seta-direita">direita</span>
+				</div>
+				<div class="opcoes">
+					<button class="btn btn-success" ng-click="trocarNivel(1)">já sei</button>
+					<button class="btn btn-info" ng-click="modificarNivel(-1)">talvez sim</button>
+					<button class="btn btn-warning" ng-click="modificarNivel(+1)">talvez não</button>
+					<button class="btn btn-danger" ng-click="trocarNivel(4)">não sei</button>
+				</div>
+
+			</div>
+		</div>
+	</div><!-- container -->
 	
 </body>
 </html>

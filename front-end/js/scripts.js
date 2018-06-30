@@ -6,9 +6,19 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	$scope.cartoes = null;
 	$scope.cartao = null;
 	$scope.cartaoSelecionado = null;
+	$scope.tela = 3;
+	$scope.textoOrigem = true;
 
     $scope.selecionarCartao = function(cartao){
 	    $scope.cartaoSelecionado = cartao;
+    }
+
+    $scope.trocarNivel = function(nivel){
+	    alert(nivel);
+    }
+
+    $scope.modificarNivel = function(valor){
+	    alert(valor);
     }
 
     var buscarCartoes = function(){
