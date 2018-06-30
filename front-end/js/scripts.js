@@ -19,7 +19,17 @@ app.controller('cartaoCtrl', function($scope, $http) {
     }
 
     $scope.modificarNivel = function(valor){
-	    alert(valor);
+    	debugger;
+    	$scope.cartaoSelecionado = $scope.cartaoAtual;
+    	var nivelCalq = $scope.cartaoSelecionado.nivel + valor;
+
+    	if ((nivelCalq >= 1) && (nivelCalq <=4)) {
+    		
+    		$scope.cartaoSelecionado.nivel = nivelCalq;
+	    	$scope.inserirCartao();
+	    }
+	    
+	    $scope.mudarPosicao($scope.posicao++);
     }
 
     $scope.mudarPosicao = function(valor){
@@ -48,6 +58,7 @@ app.controller('cartaoCtrl', function($scope, $http) {
     }
 
     $scope.inserirCartao = function(){
+    	debugger;
    	    $http({
 			method: 'POST',
 			url: "http://172.16.16.1:8080/cartoes",
