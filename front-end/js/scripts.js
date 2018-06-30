@@ -34,9 +34,14 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	    $scope.mudarPosicao($scope.posicao++);
     }
 
-    $scope.mudarPosicao = function(valor){
-    	$scope.posicao = $scope.posicao + valor;
-	    $scope.cartaoAtual = $scope.cartoes[$scope.posicao];
+    $scope.mudarPosicao = function(valor){    	
+    	var posicaoCalq = $scope.posicao + valor;
+
+		if ( (posicaoCalq >=0) && (posicaoCalq<$scope.cartoes.length)){
+			$scope.posicao = posicaoCalq;        
+	    	$scope.cartaoAtual = $scope.cartoes[$scope.posicao];
+		}
+    	
     }
 
     var buscarCartoes = function(){
@@ -60,7 +65,6 @@ app.controller('cartaoCtrl', function($scope, $http) {
     }
 
     $scope.inserirCartao = function(){
-    	debugger;
    	    $http({
 			method: 'POST',
 			url: "http://172.16.16.1:8080/cartoes",
