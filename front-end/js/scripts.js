@@ -1,7 +1,7 @@
 var app = angular.module('myApp', []);
 
 
-app.controller('cartaoCtrl', function($scope, $http) {
+app.controller('cartaoCtrl', function($scope, $http, $filter) {
     
 	$scope.cartoes = null;
 	$scope.cartao = null;
@@ -55,6 +55,7 @@ app.controller('cartaoCtrl', function($scope, $http) {
 	    $http.get("http://172.16.16.1:8080/cartoes")
 	    .then(function (response) {
 	    	$scope.cartoes = response.data;
+	    	$scope.cartoes = $filter('orderBy')($scope.cartoes, 'id');
 	    	$scope.cartaoAtual = $scope.cartoes[$scope.posicao];
 	    });
     }
