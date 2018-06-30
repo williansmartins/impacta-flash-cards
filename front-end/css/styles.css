@@ -1,5 +1,9 @@
-h1{
-	color: blue;
+h3{
+	color: white;
+}
+
+h2{
+	color: white;
 }
 
 .card-header{
@@ -14,31 +18,20 @@ h1{
 	display: none;
 }
 
-.navegacao{
-	outline: solid 1px;
-	height: 200px;
-}
-
-.flashcards{
-	margin: 0 auto;
+.center{
+	align-content: center;
+	text-align: center;	
 }
 
 .cartao{
-	float: left;
-	outline: solid 1px red;
-    width: 231px;
-    display: block;
-}
-
-.seta-direita{
-	float: left;
-	outline: solid 1px green;
-} 
-.seta-esquerda{
-	float: left;
-	outline: solid 1px green;
-}
-
-.opcoes{
 	margin-top: 10px;
+	font-size: 2rem;
+}
+
+.cartao:hover{
+	font-size: 5rem;
+}
+
+.botoes{
+	margin-top: 20px;
 }

@@ -3,6 +3,7 @@
 	<title>titulo da pagina</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 	<script src="js/vendor/jquery-3.3.1.slim.min.js" ></script>
 	<script src="js/vendor/jquery.maskedinput.min.js" ></script>
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script> -->
@@ -22,7 +23,7 @@
 				<button class="btn" ng-click="tela=3">Jogar</button>
 			</div>
 
-			<div class="col-lg-6 formulario" ng-show="tela==2">
+			<div class="col-lg-4 formulario" ng-show="tela==2">
 				<div class="card card-outline-secondary">
 					<div class="card-header">
 						<h3 class="mb-0">Formulario {{idiomaOrigem}}</h3>
@@ -72,7 +73,7 @@
 				</div><!-- card top -->
 			</div>
 
-			<div class="col-lg-6 tabela" ng-show="tela==2">
+			<div class="col-lg-8 tabela" ng-show="tela==2">
 				<div class="card card-outline-secondary">
 					<div class="card-header">
 						<h3 class="mb-0">Flash Cards</h3>
@@ -98,8 +99,16 @@
 										<td>{{cartao.idiomaDestino}}</td>
 										<td>{{cartao.textoOrigem}}</td>
 										<td>{{cartao.textoDestino}}</td>
-										<td> <button class="btn btn-primary" ng-click="selecionarCartao(cartao)">E</button> </td>
-										<td> <button class="btn btn-danger" ng-click="deletarCartao(cartao.id)">X</button> </td>
+										<td> 
+											<button class="btn btn-primary" ng-click="selecionarCartao(cartao)">
+												<span class="fa fa-edit"></span>
+											</button>
+										</td>
+										<td>
+											<button class="btn btn-danger" ng-click="deletarCartao(cartao.id)">
+												<span class="fa fa-times-circle"></span>
+											</button> 
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -107,29 +116,40 @@
 					</div>
 				</div>
 			</div><!-- col lg div-->
-
-			<div class="flashcards" ng-show="tela==3">
-				{{posicao}}
-				<div class="linguagem">
-					<span class="origem">{{cartaoAtual.idiomaOrigem}}</span>
-					-->
-					<span class="destino">{{cartaoAtual.idiomaDestino}}</span>
-				</div>
-				<div class="navegacao">
-					<span class="seta-esquerda" ng-click="mudarPosicao(-1)">esquerda</span>
-					<div class="cartao">
-						<span class="origem" ng-show="textoOrigem" ng-click="textoOrigem=false">{{cartaoAtual.textoOrigem}}</span>
-						<span class="destino" ng-show="!textoOrigem" ng-click="textoOrigem=true">{{cartaoAtual.textoDestino}}</span>
+			<div class="col-lg-12">
+				<div class="card card-outline-secondary">
+					<div class="card-header">
+						<div class="col-lg-12" ng-show="tela==3">
+							<h2 class="center">
+								<span class="origem">{{cartaoAtual.idiomaOrigem}}</span>
+								<span class="fa fa-arrow-right"></span>
+								<span class="destino">{{cartaoAtual.idiomaDestino}}</span>
+							</h2>
+						</div>
 					</div>
-					<span class="seta-direita" ng-click="mudarPosicao(+1)">direita</span>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-3 center">
+								<span class="seta-esquerda fa fa-arrow-left fa-3x" ng-click="mudarPosicao(-1)"></span>
+							</div>
+							<div class="col-lg-6 cartao center">
+								<span class="origem" ng-show="textoOrigem" ng-click="textoOrigem=false">{{cartaoAtual.textoOrigem}}</span>
+								<span class="destino" ng-show="!textoOrigem" ng-click="textoOrigem=true">{{cartaoAtual.textoDestino}}</span>
+							</div>
+							<div class="col-lg-3 center">
+								<span class="seta-direita fa fa-arrow-right fa-3x" ng-click="mudarPosicao(+1)"></span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-12 center botoes">	
+								<button class="btn btn-success" ng-click="trocarNivel(1)">já sei</button>
+								<button class="btn btn-info" ng-click="modificarNivel(-1)">talvez sim</button>
+								<button class="btn btn-warning" ng-click="modificarNivel(+1)">talvez não</button>
+								<button class="btn btn-danger" ng-click="trocarNivel(4)">não sei</button>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="opcoes">
-					<button class="btn btn-success" ng-click="trocarNivel(1)">já sei</button>
-					<button class="btn btn-info" ng-click="modificarNivel(-1)">talvez sim</button>
-					<button class="btn btn-warning" ng-click="modificarNivel(+1)">talvez não</button>
-					<button class="btn btn-danger" ng-click="trocarNivel(4)">não sei</button>
-				</div>
-
 			</div>
 		</div>
 	</div><!-- container -->
